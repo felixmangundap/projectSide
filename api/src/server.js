@@ -5,12 +5,11 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import cors from 'cors';
 
-import Schema from './schema';
+import mongoDB from './keys';
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 import testAPIRouter from './routes/testAPI';
 
-const mongoDB = 'mongodb+srv://felixmangundap:690503Ftc@projectside-odmhw.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 const db = mongoose.connection;
@@ -28,6 +27,6 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use("/testAPI", testAPIRouter);
+app.use('/testAPI', testAPIRouter);
 
 module.exports = app;

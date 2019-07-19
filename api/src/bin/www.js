@@ -1,5 +1,3 @@
-// bin/www.js
-
 /**
  * Module dependencies.
  */

@@ -5,12 +5,11 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import cors from 'cors';
 
-import mongoDB from './keys';
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 import testAPIRouter from './routes/testAPI';
 
-mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://felixmangundap:690503Ftc@projectside-odmhw.mongodb.net/projectSide?retryWrites=true&w=majority', { useNewUrlParser: true });
 
 const db = mongoose.connection;
 db.once('open', () => console.log('Connected to the Database'));

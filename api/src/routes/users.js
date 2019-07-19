@@ -6,28 +6,65 @@ import Users from '../schemas/users';
 const router = express.Router();
 
 const getUsers = (req, res) => {
-  const { id } = req.params;
-  Users.find({ id }, (err, user) => {
-    if (err) {
-      res.json({ error: err });
-    }
-    res.json({ user });
-  });
-};
-
-const getUser = (req, res) => {
   Users.find({}, (err, users) => {
     if (err) {
-      res.json({ error: err });
+      res.status(400).json({ error: err });
+      return;
     }
     res.json({ users });
   });
 };
 
+const getUser = (req, res) => {
+  const { id } = req.params;
+  Users.find({ id }, (err, user) => {
+    if (err) {
+      res.status(400).json({ error: err });
+      return;
+    }
+    res.json({ user });
+  });
+};
+
+const createUser = (req, res) => {
+  const { user } = req.body;
+  console.log(user);
+  Users.create(user, (err) => {
+    if (err) {
+      res.status(400).json({ error: err });
+      return;
+    }
+    res.json({ message: 'User Created Successfully' });
+  });
+};
+
+const deleteUser = (req, res) => {
+  const { id } = req.params;
+  Users.remove({ id }, (err) => {
+    if (err) {
+      res.status(400).json({ error: err });
+      return;
+    }
+    res.json({ message: 'User Deleted Successfully' });
+  });
+};
+
+const updateUser = (req, res) => {
+  const { id } = req.params;
+  const { user } = req.body;
+  Users.remove({ id }, user, (err) => {
+    if (err) {
+      res.status(400).json({ error: err });
+      return;
+    }
+    res.json({ message: 'User Updated Successfully' });
+  });
+};
+
 router.get('/get', getUsers);
 router.get('/get/:id', getUser);
-// router.post('/create', Heros.createHero);
-// router.put('/update/:id', Heros.updateHero);
-// router.delete('/remove/:id', Heros.removeHero);
+router.post('/create', createUser);
+router.delete('/remove/:id', deleteUser);
+router.put('/update/:id', updateUser);
 
 export default router;

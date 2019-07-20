@@ -17,7 +17,7 @@ const getUsers = (req, res) => {
 
 const getUser = (req, res) => {
   const { id } = req.params;
-  Users.find({ id }, (err, user) => {
+  Users.find({ _id: id }, (err, user) => {
     if (err) {
       res.status(400).json({ error: err });
       return;
@@ -28,7 +28,6 @@ const getUser = (req, res) => {
 
 const createUser = (req, res) => {
   const { user } = req.body;
-  console.log(user);
   Users.create(user, (err) => {
     if (err) {
       res.status(400).json({ error: err });
@@ -40,7 +39,7 @@ const createUser = (req, res) => {
 
 const deleteUser = (req, res) => {
   const { id } = req.params;
-  Users.remove({ id }, (err) => {
+  Users.remove({ _id: id }, (err) => {
     if (err) {
       res.status(400).json({ error: err });
       return;
@@ -52,7 +51,7 @@ const deleteUser = (req, res) => {
 const updateUser = (req, res) => {
   const { id } = req.params;
   const { user } = req.body;
-  Users.remove({ id }, user, (err) => {
+  Users.remove({ _id: id }, user, (err) => {
     if (err) {
       res.status(400).json({ error: err });
       return;

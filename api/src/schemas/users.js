@@ -1,11 +1,12 @@
 import mongoose from 'mongoose';
 
 const { Schema, Types } = mongoose;
+const { ObjectId } = Types;
 
 const userSchema = new Schema({
   name: {
     type: String,
-    required: true,
+    required: [true, 'Name can\'t be empty'],
   },
   email: {
     type: String,
@@ -23,9 +24,7 @@ const userSchema = new Schema({
     required: [true, 'Password can\'t be empty'],
   },
   projects: [{
-    projectId: {
-      type: Types.ObjectId,
-    },
+    projectId: ObjectId,
   }],
 }, { timestamps: true });
 

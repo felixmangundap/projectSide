@@ -9,17 +9,18 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
-    match: /\S+@\S+\.\S+/,
-    unique: true,
-    required: true,
-    index: true,
+    lowercase: true,
+    match: [/\S+@\S+\.\S+/, 'Invalid email'],
+    index: {
+      unique: [true, 'Email already exists'],
+    },
+    required: [true, 'Email can\'t be empty'],
   },
   password: {
     type: String,
-    minlength: 8,
-    match: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$/,
-    unique: true,
-    required: true,
+    minlength: [8, 'Invalid Password'],
+    match: [/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$/, 'Invalid password'],
+    required: [true, 'Password can\'t be empty'],
   },
   projects: [{
     projectId: {

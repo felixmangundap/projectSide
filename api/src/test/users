@@ -2,8 +2,8 @@ fetch('http://localhost:9000/users/create', {
   method: 'POST',
   body: JSON.stringify({
     user: {
-        name: 'Test User',
-        email: 'abc@gmail.com',
+        name: 'Test Update',
+        email: 'ABC@gmail.com',
         password: '123456FTC'
     }
   }),
@@ -14,12 +14,11 @@ fetch('http://localhost:9000/users/create', {
 .then(res => res.json())
 .then(console.log)
 
-fetch('http://localhost:9000/users/update/5d335dc97f5c57091f55e047', {
+fetch('http://localhost:9000/users/update/5d337951e3dddb0b4c921107', {
   method: 'PUT',
   body: JSON.stringify({
     user: {
-        name: 'Test Update',
-        email: 'cde@gmail.com'
+        name: 'Test 1',
     }
   }),
   headers: {
@@ -29,7 +28,7 @@ fetch('http://localhost:9000/users/update/5d335dc97f5c57091f55e047', {
 .then(res => res.json())
 .then(console.log)
 
-fetch('http://localhost:9000/users/delete/5d335dc97f5c57091f55e047', {
+fetch('http://localhost:9000/users/delete/5d337951e3dddb0b4c921107', {
   method: 'DELETE'
 })
 .then(res => res.json())
@@ -39,6 +38,6 @@ fetch('http://localhost:9000/users/get')
   .then(res => res.json())
   .then(console.log)
 
-fetch('http://localhost:9000/users/get/5d335dc97f5c57091f55e047')
+fetch('http://localhost:9000/users/get/5d337951e3dddb0b4c921107')
   .then(res => res.json())
   .then(console.log)

@@ -8,7 +8,7 @@ const createUser = (req, res) => {
   const { user } = req.body;
   const { email } = user;
 
-  Users.find({ email }, (err, targetUser) => {
+  Users.findOne({ email }, (err, targetUser) => {
     if (err) {
       res.status(400).json({ error: err });
       return;

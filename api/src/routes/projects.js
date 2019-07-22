@@ -88,10 +88,7 @@ const deleteProject = (req, res) => {
       return;
     }
 
-    console.log(targetProject);
-    const { _id, ownerId } = targetProject;
-
-    Users.updateOne({ _id: ownerId }, { $pull: { projects: { projectId: _id } } }, (err, targetUser) => {
+    Users.update({}, { $pull: { projects: { projectId: id } } }, (err, targetUser) => {
       if (err) {
         res.status(400).json({ error: err });
         return;

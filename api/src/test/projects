@@ -28,7 +28,7 @@ fetch('http://localhost:9000/users/update/5d337951e3dddb0b4c921107', {
 .then(res => res.json())
 .then(console.log)
 
-fetch('http://localhost:9000/projects/delete/5d3498050365a8199b42b2f0', {
+fetch('http://localhost:9000/projects/delete/5d3636a0cea43d1df329ffdb', {
   method: 'DELETE'
 })
 .then(res => res.json())

@@ -14,7 +14,7 @@ fetch('http://localhost:9000/users/create', {
 .then(res => res.json())
 .then(console.log)
 
-fetch('http://localhost:9000/users/update/5d337951e3dddb0b4c921107', {
+fetch('http://localhost:9000/users/update/', {
   method: 'PUT',
   body: JSON.stringify({
     user: {
@@ -28,7 +28,7 @@ fetch('http://localhost:9000/users/update/5d337951e3dddb0b4c921107', {
 .then(res => res.json())
 .then(console.log)
 
-fetch('http://localhost:9000/users/delete/5d337951e3dddb0b4c921107', {
+fetch('http://localhost:9000/users/delete/', {
   method: 'DELETE'
 })
 .then(res => res.json())
@@ -38,6 +38,6 @@ fetch('http://localhost:9000/users/get')
   .then(res => res.json())
   .then(console.log)
 
-fetch('http://localhost:9000/users/get/5d337951e3dddb0b4c921107')
+fetch('http://localhost:9000/users/get/')
   .then(res => res.json())
   .then(console.log)

@@ -107,7 +107,7 @@ const deleteProject = (req, res) => {
 router.post('/create', createProject);
 router.get('/get', getProjects);
 router.get('/get/:id', getProject);
-router.put('/update/:id', updateProject);
+router.patch('/update/:id', updateProject);
 router.delete('/delete/:id', deleteProject);
 
 export default router;

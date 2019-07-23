@@ -92,7 +92,7 @@ const deleteUser = (req, res) => {
 router.post('/create', createUser);
 router.get('/get', getUsers);
 router.get('/get/:id', getUser);
-router.put('/update/:id', updateUser);
+router.patch('/update/:id', updateUser);
 router.delete('/delete/:id', deleteUser);
 
 export default router;

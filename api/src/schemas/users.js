@@ -26,6 +26,9 @@ const userSchema = new Schema({
   projects: [{
     projectId: ObjectId,
   }],
+  ideas: [{
+    ideaId: ObjectId,
+  }],
 }, { timestamps: true });
 
 

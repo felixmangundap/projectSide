@@ -8,6 +8,7 @@ import cors from 'cors';
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 import projectsRouter from './routes/projects';
+import ideasRouter from './routes/ideas';
 import testAPIRouter from './routes/testAPI';
 
 mongoose.connect('mongodb+srv://felixmangundap:690503Ftc@projectside-odmhw.mongodb.net/projectSide?retryWrites=true&w=majority', { useNewUrlParser: true });
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
+app.use('/ideas', ideasRouter);
 app.use('/testAPI', testAPIRouter);
 
 module.exports = app;

@@ -27,4 +27,4 @@ const ideaSchema = new Schema({
 }, { timestamps: true });
 
 
-module.exports = mongoose.model('Projects', ideaSchema);
+module.exports = mongoose.model('Ideas', ideaSchema);

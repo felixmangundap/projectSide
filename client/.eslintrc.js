@@ -21,6 +21,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'react/forbid-prop-types': 'off',
   },
   parser: 'babel-eslint', 
 };

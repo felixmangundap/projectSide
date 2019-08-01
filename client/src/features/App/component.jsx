@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import logo from '../../assets/logo.svg';
-import './App.css';
+import './style.css';
 
 class App extends Component {
   state = {
@@ -18,12 +20,15 @@ class App extends Component {
   }
 
   render() {
+    const { profile: { name } } = this.props;
     const { apiResponse } = this.state;
+
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>{ apiResponse }</p>
+          <p>{`Hello ${name}`}</p>
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -37,5 +42,13 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  profile: PropTypes.object,
+};
+
+App.defaultProps = {
+  profile: {},
+};
 
 export default App;

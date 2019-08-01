@@ -5,4 +5,4 @@ export default combineReducers({
   profileReducer,
 });
 
-export const profileWithState = state => fromProfile.withState(state.actionTracker);
+export const profileWithState = state => fromProfile.withState(state.profileReducer);

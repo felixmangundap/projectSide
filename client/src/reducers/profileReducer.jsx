@@ -1,12 +1,24 @@
-export const initialState = {};
+import types from '../actions/actions';
+
+export const initialState = {
+  profile: {
+    name: 'FFM',
+  },
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'SIMPLE_ACTION':
+    case types.userFetch.success:
       return {
-        result: action.payload,
+        profile: {
+          name: 'Felix',
+        },
       };
     default:
       return state;
   }
 };
+
+export const withState = state => ({
+  getProfile: () => state.profile,
+});

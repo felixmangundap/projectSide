@@ -10,17 +10,20 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.callAPI();
   }
 
-  callAPI = () => {
-    fetch('http://localhost:9000/testAPI')
-      .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }));
+  renderProfiles = () => {
+    const { profile: profiles } = this.props;
+    return profiles.map(profile => (
+      <div key={profile._id}>
+        <p>{profile.name}</p>
+        <p>{profile.email}</p>
+      </div>
+    ));
   }
 
   render() {
-    const { profile: { name } } = this.props;
+    const { fetchUsers } = this.props;
     const { apiResponse } = this.state;
 
     return (
@@ -28,15 +31,8 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>{ apiResponse }</p>
-          <p>{`Hello ${name}`}</p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          {this.renderProfiles()}
+          <button type="button" onClick={fetchUsers}>Fetch Users</button>
         </header>
       </div>
     );
@@ -44,11 +40,12 @@ class App extends Component {
 }
 
 App.propTypes = {
-  profile: PropTypes.object,
+  fetchUsers: PropTypes.func.isRequired,
+  profile: PropTypes.array,
 };
 
 App.defaultProps = {
-  profile: {},
+  profile: [],
 };
 
 export default App;

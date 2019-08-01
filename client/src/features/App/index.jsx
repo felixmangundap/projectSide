@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
 import App from './component';
-import { profileWithState } from '../../reducers/rootReducer';
+import types from '../../actions/actions';
+import { profileWithState } from '../../reducers/reducers';
 
 
 const mapStateToProps = state => ({
@@ -10,6 +11,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProp = {
+  fetchUsers: types.usersFetch.request,
 };
 
 export default connect(mapStateToProps, mapDispatchToProp)(App);

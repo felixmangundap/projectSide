@@ -21,6 +21,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'no-underscore-dangle': 'off',
     'react/forbid-prop-types': 'off',
   },
   parser: 'babel-eslint', 

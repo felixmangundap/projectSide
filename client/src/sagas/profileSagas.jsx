@@ -1,18 +1,25 @@
 import {
   call,
-  // put,
-  // select,
+  put,
+  takeEvery,
 } from 'redux-saga/effects';
+import axios from 'axios';
+import types from '../actions/actions';
 
-const sagaDefs = [];
-export default sagaDefs;
+export const fetchUsers = async () => {
+  const url = 'http://localhost:9000/users/get';
+  const response = await axios.get(url);
+  return response.data;
+};
 
-sagaDefs.push({
-  actionType: 'SIMPLE_ACTION',
-  work: function* work(action) {
-    const { name } = action.payload;
-
-    const response = yield call('localhost:3000/api', name);
-    response.name = name;
-  },
-});
+function* fetchUsersSaga() {
+  try {
+    const data = yield call(fetchUsers);
+    yield put({ type: types.usersFetch.success, data });
+  } catch (error) {
+    yield put({ type: types.usersFetch.error, error });
+  }
+}
+export default function* profileSagas() {
+  yield takeEvery(types.usersFetch.request, fetchUsersSaga);
+}

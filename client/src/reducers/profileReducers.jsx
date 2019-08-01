@@ -4,21 +4,22 @@ export const initialState = {
   profile: {
     name: 'FFM',
   },
+  users: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case types.userFetch.success:
+    case types.usersFetch.success: {
+      const { users } = action.data;
       return {
-        profile: {
-          name: 'Felix',
-        },
+        users,
       };
+    }
     default:
       return state;
   }
 };
 
 export const withState = state => ({
-  getProfile: () => state.profile,
+  getProfile: () => state.users,
 });

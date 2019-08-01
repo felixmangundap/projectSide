@@ -1,33 +1,35 @@
+import { createAction } from 'redux-actions';
+
 const actionTypes = {};
 
 actionTypes.userCreate = {
-  request: 'userCreateRequest',
-  success: 'userCreateSuccess',
-  error: 'userCreateError',
+  request: createAction('userCreateRequest'),
+  success: createAction('userCreateSuccess'),
+  error: createAction('userCreateError'),
 };
 
 actionTypes.usersFetch = {
-  request: 'usersFetchRequest',
-  success: 'usersFetchSuccess',
-  error: 'usersFetchError',
+  request: createAction('usersFetchRequest'),
+  success: createAction('usersFetchSuccess'),
+  error: createAction('usersFetchError'),
 };
 
 actionTypes.userFetch = {
-  request: 'userFetchRequest',
-  success: 'userFetchSuccess',
-  error: 'userFetchError',
+  request: createAction('userFetchRequest'),
+  success: createAction('userFetchSuccess'),
+  error: createAction('userFetchError'),
 };
 
 actionTypes.userUpdate = {
-  request: 'userUpdateRequest',
-  success: 'userUpdateSuccess',
-  error: 'userUpdateError',
+  request: createAction('userUpdateRequest'),
+  success: createAction('userUpdateSuccess'),
+  error: createAction('userUpdateError'),
 };
 
 actionTypes.userDelete = {
-  request: 'userDeleteRequest',
-  success: 'userDeleteSuccess',
-  error: 'userDeleteError',
+  request: createAction('userDeleteRequest'),
+  success: createAction('userDeleteSuccess'),
+  error: createAction('userDeleteError'),
 };
 
 export default actionTypes;

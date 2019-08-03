@@ -5,34 +5,20 @@ import logo from '../../assets/logo.svg';
 import './style.css';
 
 class App extends Component {
-  state = {
-    apiResponse: '',
-  }
+  state = {}
 
   componentDidMount() {
-  }
-
-  renderProfiles = () => {
-    const { profile: profiles } = this.props;
-    return profiles.map(profile => (
-      <div key={profile._id}>
-        <p>{profile.name}</p>
-        <p>{profile.email}</p>
-      </div>
-    ));
+    const { fetchUser } = this.props;
+    fetchUser({ id: '5d44d997299007196a617770' });
   }
 
   render() {
-    const { fetchUsers } = this.props;
-    const { apiResponse } = this.state;
-
+    const { profile } = this.props;
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>{ apiResponse }</p>
-          {this.renderProfiles()}
-          <button type="button" onClick={fetchUsers}>Fetch Users</button>
+          <p>{ `Hello, I'm ${profile.name}` }</p>
         </header>
       </div>
     );
@@ -40,12 +26,12 @@ class App extends Component {
 }
 
 App.propTypes = {
-  fetchUsers: PropTypes.func.isRequired,
-  profile: PropTypes.array,
+  fetchUser: PropTypes.func.isRequired,
+  profile: PropTypes.object,
 };
 
 App.defaultProps = {
-  profile: [],
+  profile: {},
 };
 
 export default App;

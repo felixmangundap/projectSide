@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProp = {
-  fetchUsers: types.usersFetch.request,
+  fetchUser: types.userFetch.request,
 };
 
 export default connect(mapStateToProps, mapDispatchToProp)(App);

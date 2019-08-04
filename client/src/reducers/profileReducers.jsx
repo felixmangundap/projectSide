@@ -76,4 +76,5 @@ export default (state = initialState, action) => {
 
 export const withState = state => ({
   getProfile: () => state.user,
+  getUsers: () => state.users,
 });

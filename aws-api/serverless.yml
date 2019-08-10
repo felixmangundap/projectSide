@@ -33,7 +33,7 @@ resources:
 
 functions:
   create:
-    handler: create.main
+    handler: routes/create.main
     events:
       - http:
           path: projects
@@ -41,7 +41,7 @@ functions:
           cors: true
           authorizer: aws_iam
   get:
-    handler: get.main
+    handler: routes/get.main
     events:
       - http:
           path: projects/{id}
@@ -49,7 +49,7 @@ functions:
           cors: true
           authorizer: aws_iam
   list:
-    handler: list.main
+    handler: routes/list.main
     events:
       - http:
           path: projects
@@ -57,7 +57,7 @@ functions:
           cors: true
           authorizer: aws_iam
   update:
-    handler: update.main
+    handler: routes/update.main
     events:
       - http:
           path: projects/{id}
@@ -65,7 +65,7 @@ functions:
           cors: true
           authorizer: aws_iam
   delete:
-    handler: delete.main
+    handler: routes/delete.main
     events:
       - http:
           path: projects/{id}
